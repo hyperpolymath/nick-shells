@@ -1,0 +1,36 @@
+= nick-shells - Citation Guide
+:toc:
+
+== BibTeX
+
+[source,bibtex]
+----
+@software{nick-shells_2025,
+  author = {Polymath, Hyper},
+  title = {nick-shells},
+  year = {2025},
+  url = {https://github.com/hyperpolymath/nick-shells},
+  license = {AGPL-3.0-or-later}
+}
+----
+
+== Harvard Style
+
+Polymath, H. (2025) _nick-shells_ [Computer software]. Available at: https://github.com/hyperpolymath/nick-shells
+
+== OSCOLA
+
+Hyper Polymath, 'nick-shells' (2025) <https://github.com/hyperpolymath/nick-shells>
+
+== MLA
+
+Polymath, Hyper. "nick-shells." 2025, github.com/hyperpolymath/nick-shells.
+
+== APA 7
+
+Polymath, H. (2025). _nick-shells_ [Computer software]. GitHub. https://github.com/hyperpolymath/nick-shells
+
+== See Also
+
+* link:../CITATION.cff[CITATION.cff]
+* link:../codemeta.json[codemeta.json]
