@@ -2,20 +2,25 @@
 
 ## Supported Versions
 
-Use this section to tell people about which versions of your project are
-currently being supported with security updates.
-
 | Version | Supported          |
 | ------- | ------------------ |
-| 5.1.x   | :white_check_mark: |
-| 5.0.x   | :x:                |
-| 4.0.x   | :white_check_mark: |
-| < 4.0   | :x:                |
+| 0.1.x   | :white_check_mark: |
 
 ## Reporting a Vulnerability
 
-Use this section to tell people how to report a vulnerability.
+To report a security vulnerability:
 
-Tell them where to go, how often they can expect to get an update on a
-reported vulnerability, what to expect if the vulnerability is accepted or
-declined, etc.
+1. **Email**: security@hyperpolymath.org
+2. **Encryption**: Use our [GPG key](https://hyperpolymath.org/gpg/security.asc)
+3. **Response Time**: We aim to respond within 48 hours
+4. **Disclosure**: We follow coordinated disclosure practices
+
+Please include:
+- Description of the vulnerability
+- Steps to reproduce
+- Potential impact assessment
+- Any suggested fixes (optional)
+
+We will acknowledge your report, investigate, and keep you informed of progress.
+Researchers who report valid vulnerabilities will be credited in our acknowledgments
+(unless they prefer to remain anonymous).

@@ -15,7 +15,7 @@
   '((version . "0.1.0")
     (schema-version . "1.0")
     (created . "2025-12-15")
-    (updated . "2025-12-15")
+    (updated . "2025-12-17")
     (project . "nick-shells")
     (repo . "github.com/hyperpolymath/nick-shells")))
 
@@ -41,18 +41,23 @@
 
 (define current-position
   '((phase . "v0.1 - Initial Setup and RSR Compliance")
-    (overall-completion . 25)
+    (overall-completion . 40)
 
     (components
      ((rsr-compliance
        ((status . "complete")
         (completion . 100)
-        (notes . "SHA-pinned actions, SPDX headers, multi-platform CI")))
+        (notes . "SHA-pinned actions, SPDX headers, permissions, multi-platform CI")))
+
+      (security
+       ((status . "complete")
+        (completion . 100)
+        (notes . "All workflows SHA-pinned, SPDX headers, proper permissions")))
 
       (documentation
        ((status . "foundation")
-        (completion . 30)
-        (notes . "README exists, META/ECOSYSTEM/STATE.scm added")))
+        (completion . 40)
+        (notes . "README, META/ECOSYSTEM/STATE.scm, SECURITY.md updated")))
 
       (testing
        ((status . "minimal")
@@ -68,7 +73,10 @@
      ("RSR-compliant CI/CD pipeline"
       "Multi-platform mirroring (GitHub, GitLab, Bitbucket)"
       "SPDX license headers on all files"
-      "SHA-pinned GitHub Actions"))))
+      "SHA-pinned GitHub Actions (all 11 workflows)"
+      "flake.nix for Nix fallback"
+      "guix.scm for primary package management"
+      "RFC 9116 compliant security.txt"))))
 
 ;;;============================================================================
 ;;; ROUTE TO MVP
@@ -79,20 +87,33 @@
     (definition . "Stable release with comprehensive documentation and tests")
 
     (milestones
-     ((v0.2
+     ((v0.1.1
+       ((name . "Security Hardening")
+        (status . "complete")
+        (items
+         ("SHA-pin all GitHub Actions"
+          "Add SPDX headers to all workflows"
+          "Add permissions declarations"
+          "Fix security.txt expiry"
+          "Update SECURITY.md with proper versions"
+          "Add flake.nix for Nix support"))))
+
+      (v0.2
        ((name . "Core Functionality")
         (status . "pending")
         (items
-         ("Implement primary features"
+         ("Add Containerfile for container builds"
+          "Implement shell configurations"
           "Add comprehensive tests"
-          "Improve documentation"))))
+          "Expand justfile with real commands"))))
 
       (v0.5
        ((name . "Feature Complete")
         (status . "pending")
         (items
-         ("All planned features implemented"
+         ("All shell configurations implemented"
           "Test coverage > 70%"
+          "Cross-platform validation"
           "API stability"))))
 
       (v1.0
@@ -101,7 +122,7 @@
         (items
          ("Comprehensive test coverage"
           "Performance optimization"
-          "Security audit"
+          "Security audit complete"
           "User documentation complete"))))))))
 
 ;;;============================================================================
@@ -157,7 +178,20 @@
        ("Added META.scm, ECOSYSTEM.scm, STATE.scm"
         "Established RSR compliance"
         "Created initial project checkpoint"))
-      (notes . "First STATE.scm checkpoint created via automated script")))))
+      (notes . "First STATE.scm checkpoint created via automated script"))
+
+     ((date . "2025-12-17")
+      (session . "security-hardening")
+      (accomplishments
+       ("SHA-pinned all 11 GitHub Actions workflows"
+        "Added SPDX headers to all workflows"
+        "Added permissions declarations to all workflows"
+        "Fixed security.txt with valid expiry date"
+        "Updated SECURITY.md with correct version (0.1.x)"
+        "Updated RSR_COMPLIANCE.adoc status"
+        "Added flake.nix for Nix package management fallback"
+        "Updated STATE.scm with current roadmap"))
+      (notes . "Security audit and hardening session")))))
 
 ;;;============================================================================
 ;;; HELPER FUNCTIONS (for Guile evaluation)
@@ -185,10 +219,11 @@
 (define state-summary
   '((project . "nick-shells")
     (version . "0.1.0")
-    (overall-completion . 25)
+    (overall-completion . 40)
     (next-milestone . "v0.2 - Core Functionality")
     (critical-blockers . 0)
     (high-priority-issues . 0)
-    (updated . "2025-12-15")))
+    (security-status . "hardened")
+    (updated . "2025-12-17")))
 
 ;;; End of STATE.scm
