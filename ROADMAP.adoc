@@ -1,0 +1,35 @@
+// SPDX-License-Identifier: MIT OR AGPL-3.0-or-later
+// SPDX-FileCopyrightText: 2025 Jonathan D.A. Jewell <hyperpolymath>
+
+= nick-shells Roadmap
+
+**Project specification pending.**
+
+== Phase 0: Current (Infrastructure)
+
+[cols="1,3,1"]
+|===
+|Status |Item |Notes
+
+|✓ |Repository governance scaffolding |Complete
+|✓ |Multi-forge sync (GitHub, GitLab, Bitbucket, Codeberg) |Complete
+|✓ |RSR language policy enforcement |Complete
+|✓ |Security scanning pipeline |Complete
+|✓ |Well-known standards compliance |Complete
+|===
+
+== Phase 1: Specification
+
+[cols="1,3,1"]
+|===
+|Status |Item |Notes
+
+|⏳ |Define project purpose and scope |Pending
+|⏳ |Identify target audience |Pending
+|⏳ |Document MVP feature set |Pending
+|⏳ |Select implementation technologies |Per RSR policy
+|===
+
+== Phase 2+: Implementation
+
+_To be defined after project specification is uploaded._
