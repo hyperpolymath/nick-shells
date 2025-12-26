@@ -1,1 +1,21 @@
+// SPDX-License-Identifier: MIT OR AGPL-3.0-or-later
+// SPDX-FileCopyrightText: 2025 Jonathan D.A. Jewell <hyperpolymath>
 
+= nick-shells
+
+**Repository project specification — will be uploaded shortly.**
+
+== Current State
+
+This repository contains governance and infrastructure scaffolding following the Rhodium Standard Repository (RSR) conventions. Actual project implementation is pending.
+
+== Infrastructure Present
+
+* Multi-forge synchronization (GitHub, GitLab, Bitbucket, Codeberg)
+* Language policy enforcement (RSR antipattern checks)
+* Security scanning (CodeQL, OSSF Scorecard)
+* Well-known standards compliance (RFC 9116)
+
+== License
+
+Dual-licensed under MIT OR AGPL-3.0-or-later.
