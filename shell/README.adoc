@@ -1,0 +1,255 @@
+// SPDX-License-Identifier: MIT OR AGPL-3.0-or-later
+// SPDX-FileCopyrightText: 2025 Jonathan D.A. Jewell <hyperpolymath>
+
+= Known-Good Baseline Shell Configuration
+:toc: macro
+:toclevels: 2
+:icons: font
+
+A minimal, secure, POSIX-compatible shell configuration that follows the https://github.com/hyperpolymath/rhodium-standard[Rhodium Standard Repository] conventions.
+
+toc::[]
+
+== Quick Start
+
+[source,bash]
+----
+# Clone and apply
+git clone https://github.com/hyperpolymath/nick-shells.git
+cd nick-shells/shell
+chmod +x apply.sh
+./apply.sh
+
+# Restart your shell or reload
+source ~/.bashrc  # or ~/.zshrc
+----
+
+== What's Included
+
+=== Security Hardening
+
+* Secure umask (022) - files are not world-writable by default
+* Core dumps disabled - prevents sensitive data leaks
+* Interactive safety aliases (`rm -i`, `mv -i`, `cp -i`)
+
+=== History Configuration
+
+* 10,000 command history
+* Timestamps on all entries
+* Duplicate removal
+* Ignores common commands (ls, cd, pwd, etc.)
+* Appends to history (doesn't overwrite)
+
+=== PATH Setup (RSR-Compliant)
+
+Automatically configures paths for:
+
+[cols="1,2"]
+|===
+|Tool |Path
+
+|User binaries
+|`~/.local/bin`, `~/bin`
+
+|Rust/Cargo
+|`~/.cargo/bin`
+
+|Deno
+|`~/.deno/bin`
+
+|Guix
+|`~/.guix-profile/bin`
+
+|Nix
+|`~/.nix-profile/...`
+|===
+
+=== Shell Improvements
+
+* **checkwinsize** - Fixes terminal size after resize
+* **globstar** - Enables `**` recursive glob pattern
+* **cdspell** - Autocorrects minor typos in `cd`
+* **extglob** - Extended pattern matching
+
+=== Useful Aliases
+
+[source,bash]
+----
+# Safety
+cp='cp -i'    # Prompt before overwrite
+mv='mv -i'    # Prompt before overwrite
+rm='rm -i'    # Prompt before remove
+
+# Navigation
+..='cd ..'
+...='cd ../..'
+....='cd ../../..'
+
+# Listing
+ll='ls -alF'
+la='ls -A'
+l='ls -CF'
+----
+
+=== XDG Base Directories
+
+Properly sets XDG environment variables:
+
+* `XDG_CONFIG_HOME` → `~/.config`
+* `XDG_CACHE_HOME` → `~/.cache`
+* `XDG_DATA_HOME` → `~/.local/share`
+* `XDG_STATE_HOME` → `~/.local/state`
+
+== Installation
+
+=== Automatic (Recommended)
+
+[source,bash]
+----
+./apply.sh
+----
+
+This script:
+
+1. Backs up your existing `.bashrc` / `.zshrc`
+2. Adds a source line to load `baseline.sh`
+3. Is idempotent (safe to run multiple times)
+
+==== Options
+
+[source,bash]
+----
+./apply.sh --help
+
+# Install for specific shell only
+./apply.sh --shell bash
+./apply.sh --shell zsh
+
+# Preview changes without applying
+./apply.sh --dry-run
+
+# Remove the baseline
+./apply.sh --uninstall
+----
+
+=== Manual Installation
+
+Add this line to your `~/.bashrc` or `~/.zshrc`:
+
+[source,bash]
+----
+. "/path/to/nick-shells/shell/baseline.sh"
+----
+
+== Customization
+
+=== Adding Your Own Settings
+
+Create a file `~/.config/shell/local.sh` with your customizations:
+
+[source,bash]
+----
+# ~/.config/shell/local.sh
+
+# Your aliases
+alias g='git'
+alias k='kubectl'
+
+# Your exports
+export MY_CUSTOM_VAR="value"
+----
+
+Then source it after baseline in your `.bashrc`:
+
+[source,bash]
+----
+. "/path/to/nick-shells/shell/baseline.sh"
+[ -f "$XDG_CONFIG_HOME/shell/local.sh" ] && . "$XDG_CONFIG_HOME/shell/local.sh"
+----
+
+=== Overriding Defaults
+
+Since baseline.sh is sourced early, you can override any setting in your local config:
+
+[source,bash]
+----
+# Override editor preference
+export EDITOR='nano'
+
+# Disable the safety aliases
+unalias rm mv cp
+
+# Change history size
+HISTSIZE=50000
+----
+
+== Compatibility
+
+[cols="1,1,2"]
+|===
+|Shell |Supported |Notes
+
+|Bash 4+
+|✅ Full
+|All features work
+
+|Bash 3.x
+|✅ Partial
+|Some shopt options may not be available
+
+|Zsh
+|✅ Full
+|Works with default settings
+
+|sh/dash
+|✅ Basic
+|POSIX subset only
+|===
+
+== Troubleshooting
+
+=== "command not found" after installation
+
+Your `$PATH` might not include the baseline paths yet. Either:
+
+* Start a new terminal session
+* Run `source ~/.bashrc` (or `~/.zshrc`)
+
+=== Conflicts with existing config
+
+The apply script creates timestamped backups:
+
+[source,bash]
+----
+~/.bashrc.backup.20250127_143022
+----
+
+To restore:
+
+[source,bash]
+----
+cp ~/.bashrc.backup.20250127_143022 ~/.bashrc
+----
+
+=== Uninstalling
+
+[source,bash]
+----
+./apply.sh --uninstall
+----
+
+Or manually remove the `# nick-shells baseline` line from your RC file.
+
+== Files
+
+[source]
+----
+shell/
+├── README.adoc    # This documentation
+├── baseline.sh    # The baseline configuration
+└── apply.sh       # Installation script
+----
+
+== License
+
+Dual-licensed under MIT OR AGPL-3.0-or-later. See link:../LICENSE.txt[LICENSE.txt].
